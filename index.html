@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Glegoo&family=Viga&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <title></title>
+</head>
+<body>
+    <h1>A Simple Calculator</h1>
+
+    <section class="container mt-5">
+       <h2><span class="text-dark">A Simple Mathematics Calculator</span></h2> 
+        <form action="#">
+
+            <div class="row mt-5">
+                <div class="col-sm-6 col-md-6"> 
+                    <label for="">Input Number 1</label>
+                    <input type="number" name="" id="num1" class="form-control" onclick="changeBgColor(this, 'rgb(176, 192, 202)')" onblur="restoreBgColor(this, 'white')" onmouseover="changeColor(this, 'aliceblue')" onmouseout="changeColor2(this, 'white')"> 
+                </div>
+    
+                <div class="col-sm-6 col-md-6 form-group">
+                    <label for="">Input Number 2</label>
+                    <input type="number" name="" id="num2" class="form-control" onclick="changeBgColor(this, 'rgb(176, 192, 202)')" onblur="restoreBgColor(this, 'white')" onmouseover="changeColor(this, 'aliceblue')" onmouseout="changeColor2(this, 'white')">
+                </div>
+            </div>
+    
+            <div class="row">
+                <div class="col-sm-12 col-md-12 form-group">
+                   <p id="result" class="form-control" readonly onmouseover="changeColor(this, 'aliceblue')" onmouseout="changeColor2(this, 'white')"></p> 
+                </div>
+            </div> 
+    
+            <div class="row">
+                <div class="col-sm-12 col-md-6 form-group add">
+                    <input type="button" value="+" class="form-control" id="addition" onclick="changeBgColor(this, 'rgb(176, 192, 202)')" onblur="restoreBgColor(this, 'white')" onmouseover="changeColor(this, 'aliceblue')" onmouseout="changeColor2(this, 'white')">
+                </div>
+    
+                <div class="col-sm-12 col-md-6 form-group">
+                    <input type="button" value="-" class="form-control" id="subtraction" onclick="changeBgColor(this,'rgb(176, 192, 202)')" onblur="restoreBgColor(this, 'white')" onmouseover="changeColor(this, 'aliceblue')" onmouseout="changeColor2(this, 'white')">
+                </div>
+    
+                <div class="col-sm-12 col-md-6 form-group">
+                    <input type="button" value="X" class="form-control" id="multiplication" onclick="changeBgColor(this, 'rgb(176, 192, 202)')" onblur="restoreBgColor(this, 'white')" onmouseover="changeColor(this, 'aliceblue')" onmouseout="changeColor2(this, 'white')">
+                </div>
+    
+                <div class="col-sm-12 col-md-6 form-group">
+                    <input type="button" value="/" class="form-control" id="division" onclick="changeBgColor(this, 'rgb(176, 192, 202)')" onblur="restoreBgColor(this, 'white')" onmouseover="changeColor(this, 'aliceblue')" onmouseout="changeColor2(this, 'white')">
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-sm-12 col-md-12 form-group">
+                    <input type="button" value="Remainder of (number 1 / number 2) " class="form-control" id="modulus" onclick="changeBgColor(this, 'rgb(176, 192,)')" onblur="restoreBgColor(this, 'white')" onmouseover="changeColor(this, 'aliceblue')" onmouseout="changeColor2(this, 'white')">
+                </div>
+            </div>
+        </form>
+
+
+        
+    </section>
+
+    <script>
+        // Select all element of interest and declare them 
+
+        let num1 = document.getElementById("num1");
+        let num2 = document.getElementById("num2");
+        let result = document.getElementById("result");
+        let addition = document.getElementById("addition");
+        let subtraction = document.getElementById("subtraction");
+        let multiplication = document.getElementById("multiplication");
+        let division = document.getElementById("division");
+        let modulus = document.getElementById("modulus");
+
+        // Bind the buttons to an event Listener
+
+        addition.addEventListener("click", add);
+        subtraction.addEventListener("click", minus);
+        multiplication.addEventListener("click", multiply);
+        division.addEventListener("click", divide);
+        modulus.addEventListener("click", modul);
+
+
+        // write the functions for the eventhandlers
+
+        function add (){
+
+            let numb1 = parseFloat(num1.value);
+            let numb2 = parseFloat(num2.value);
+
+           let answer = numb1 + numb2;
+
+           result.innerText = `${answer}`;
+           
+        }
+
+        function minus (){
+
+            let numb1 = parseFloat(num1.value);
+            let numb2 = parseFloat(num2.value);
+
+            let answer = numb1 - numb2;
+
+            result.innerHTML = `${answer}`;
+
+        }
+        function multiply (){
+
+            let numb1 = parseFloat(num1.value);
+            let numb2 = parseFloat(num2.value);
+
+            let answer = numb1 * numb2;
+
+            result.innerHTML = `${answer}`;
+
+        }
+
+        function divide (){
+
+            let numb1 = parseFloat(num1.value);
+            let numb2 = parseFloat(num2.value);
+
+            let answer = numb1 / numb2;
+
+            result.innerText = `${answer}`;
+
+        }
+
+        function modul (){
+
+            let numb1 = parseFloat(num1.value);
+            let numb2 = parseFloat(num2.value);
+
+            let answer = numb1 % numb2;
+
+            // result.innerHTML = `${answ}`;
+            alert(answer)
+
+        }
+
+        function changeBgColor (element, bgColor){
+            element.style.backgroundColor = bgColor;
+        }
+
+        function restoreBgColor (element, bgColor){
+            element.style.backgroundColor = bgColor;
+        }
+
+        function changeColor (element, Color){
+            element.style.backgroundColor = Color;
+        }
+
+        function changeColor2 (element, color){
+            element.style.backgroundColor = color;
+        }
+
+
+
+    </script>
+</body>
+</html>
